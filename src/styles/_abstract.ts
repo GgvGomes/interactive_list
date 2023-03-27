@@ -1,6 +1,6 @@
 export const Cards = {
-    CARDS_SPACE: 20,
-    CARDS_HEIGHT: 64,
+    CARDS_SPACE: 10,
+    CARDS_HEIGHT: 70 + 10,
 } 
 
 export const Colors = {

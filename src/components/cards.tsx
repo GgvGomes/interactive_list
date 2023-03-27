@@ -3,7 +3,7 @@ import { card_style } from "../styles/components/card"
 
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
-type Card_Props = {
+export type Card_Props = {
     title: string,
     id: number,
 }
@@ -13,7 +13,7 @@ export function Card({title, id}: Card_Props){
         <View style={card_style.card}>
             <Text style={card_style.card_text}>{title}</Text>
 
-            <MaterialIcons name="drag-indicator" size={28} color={'#fff'} 
+            <MaterialIcons name="drag-indicator" size={32} color={'#fff'} 
             //  onPress={onPress}
             />
         </View>
