@@ -26,8 +26,5 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: Colors.backgroundColor,
-
-        color: Colors.textColor,
-        fontFamily: "'Roboto', sans-serif",
     },
 });

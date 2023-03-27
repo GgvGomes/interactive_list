@@ -1,1 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
+*{
+    color: 'aliceblue';
+    font-family: 'Roboto', sans-serif;
+}
