@@ -3,14 +3,8 @@ import { Cards, Colors } from "../_abstract";
 
 export const card_style = StyleSheet.create({
     cards_container: {
-        marginTop: 16,
-
-        alignItems: "center",
-        justifyContent: "flex-start",
-
-        width: "100%",
-
-        padding: 28,
+        flex: 1,
+        padding: 32,
     },
 
     card: {
@@ -26,14 +20,12 @@ export const card_style = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-
-        width: "100%",
     },
 
-    text_card: {
+    card_text: {
         color: Colors.textColor,
 
         fontSize: 16,
         fontWeight: "500",
-    }
+    },
 });

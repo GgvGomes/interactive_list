@@ -5,11 +5,11 @@ export const header_style = StyleSheet.create({
     header_container: {
         backgroundColor: Colors.secondaryColor,
 
-        width: '100%', 
-        height: '8%',
-        paddingTop: 6,
+        flex: 1/ 12,
+        paddingBottom: 16,
 
         alignItems: 'center',
+        justifyContent: 'center',
     },
     
     text_content: {
