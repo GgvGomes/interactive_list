@@ -3,7 +3,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { List } from './src/List';
 import './src/styles/global.css';
-import "setimmediate"
+import "setimmediate";
 
 export default function App() {
   return (

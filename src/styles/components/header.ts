@@ -14,14 +14,19 @@ export const header_style = StyleSheet.create({
     
     text_content: {
         width: '300px',
+
+        flexDirection: 'row',
+        flexWrap: 'wrap',
         alignItems: 'center',
         justifyContent: 'center',
     },
 
     header_title:{
         fontSize: 44,
+        fontWeight: "800",
 
-        lineHeight: 0.2,
+        // lineHeight: 1,
+        color: 'aliceblue',
     },
 
     header_text:{
