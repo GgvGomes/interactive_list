@@ -8,6 +8,7 @@ import Animated, {
   withSpring,
   useAnimatedGestureHandler,
   useAnimatedReaction,
+  cancelAnimation,
 } from "react-native-reanimated";
 import { Card, Card_Props } from "./cards";
 
@@ -63,15 +64,13 @@ export function MovabelCard({
   const longPressGesture = Gesture.LongPress()
     .onStart((event) => {
       runOnJS(setMoving)(true);
-
       // console.log("Long press started");
     })
-    .minDuration(200);
+    .minDuration(200)
 
-  const dragGesture = Gesture
-    .Pan()
+    // com uns 3 segundo ele n roda
+  const dragGesture = Gesture.Pan()
     .manualActivation(true)
-    .activateAfterLongPress(200)
     .onTouchesMove((event, state) => {
       moving == true ? state.activate() : state.fail();
     })
@@ -101,19 +100,16 @@ export function MovabelCard({
         );
       }
     })
-    .onFinalize(() => {
+    .onFinalize((event) => {
       const newPosition = cardsPosition.value[id] * Cards.CARDS_HEIGHT;
       top.value = withSpring(newPosition);
 
       runOnJS(setMoving)(false);
     })
-    .onTouchesCancelled(() =>{
-      const newPosition = cardsPosition.value[id] * Cards.CARDS_HEIGHT;
-      top.value = withSpring(newPosition);
-
+    .onEnd((event) => {
       runOnJS(setMoving)(false);
     })
-    .simultaneousWithExternalGesture(longPressGesture);
+    .simultaneousWithExternalGesture(longPressGesture);;
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
