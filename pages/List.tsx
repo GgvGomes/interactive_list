@@ -1,11 +1,11 @@
 import { StyleSheet, View } from "react-native";
 
-import { Header } from "./components/header";
-import { MovabelCard } from "./components/movableCard";
+import { Header } from "../components/header";
+import { MovabelCard } from "../components/movableCard";
 
-import { Cards_Object } from "./static/objetcs";
-import { Cards, Colors } from "./styles/_abstract";
-import { card_style } from "./styles/components/card";
+import { Cards_Object } from "../static/objetcs";
+import { Cards, Colors } from "../styles/_abstract";
+import { card_style } from "../styles/components/card";
 import Animated, { useAnimatedScrollHandler, useSharedValue } from "react-native-reanimated";
 
 export function List() {
@@ -61,9 +61,9 @@ export function List() {
 
 const styles = StyleSheet.create({
     container: {
+        color: 'aliceblue', 
+        // fontFamily: "'Roboto', sans-serif",
         flex: 1,
         backgroundColor: Colors.backgroundColor,
-        color: 'aliceblue',
-        fontFamily: "'Roboto', sans-serif",
     },
 });

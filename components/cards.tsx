@@ -1,5 +1,5 @@
 import { Text, View } from "react-native"
-import { card_style } from "../styles/components/card"
+import { card_style } from "../styles/components/card";
 
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 

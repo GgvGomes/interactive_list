@@ -16,7 +16,7 @@ export const card_style = StyleSheet.create({
         backgroundColor: Colors.primaryColor,
         padding: 16, // 41:41
 
-        boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.5)",
+        // boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.5)",
         
         height: Cards.CARDS_HEIGHT - Cards.CARDS_SPACE,
 

@@ -9,17 +9,12 @@ import Animated, {
   useAnimatedGestureHandler,
   useAnimatedReaction,
 } from "react-native-reanimated";
-import { movableCard } from "../styles/components/movableCard";
 import { Card, Card_Props } from "./cards";
 
-import {
-  Gesture,
-  GestureDetector,
-  LongPressGestureHandler,
-  PanGestureHandler,
-} from "react-native-gesture-handler";
+import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { Cards } from "../styles/_abstract";
-import { Cards_Object } from "../static/objetcs";
+
+import { movableCard } from "../styles/components/movableCard";
 
 export function MovabelCard({
   title,
@@ -32,7 +27,6 @@ export function MovabelCard({
   scrollY: SharedValue<number>;
   cardsCount: number;
 }) {
-  //   const opacity = useSharedValue(0.4);
   const [moving, setMoving] = useState(false);
   const top = useSharedValue(cardsPosition.value[id] * Cards.CARDS_HEIGHT);
 
@@ -70,20 +64,21 @@ export function MovabelCard({
     .onStart((event) => {
       runOnJS(setMoving)(true);
 
-      //   opacity.value = withSpring(opacity.value + 0.6);
-      console.log("Long press started");
+      // console.log("Long press started");
     })
-    .minDuration(500);
+    .minDuration(200);
 
-  const dragGesture = Gesture.Pan()
+  const dragGesture = Gesture
+    .Pan()
     .manualActivation(true)
+    .activateAfterLongPress(200)
     .onTouchesMove((event, state) => {
       moving == true ? state.activate() : state.fail();
     })
     .onUpdate((event) => {
       const positionY = event.absoluteY + scrollY.value;
-      top.value = positionY - Cards.CARDS_HEIGHT - 20;
-      // - 20 é para ficar mais centralizado
+      top.value = positionY - Cards.CARDS_HEIGHT - 50;
+      // - 50 é para ficar mais centralizado
 
       const startPositionList = 0;
       const endPositionList = cardsCount - 1; // descartando 1 do length
@@ -97,7 +92,7 @@ export function MovabelCard({
       // Eu acho q isso já funcionava
       // const newPosition = currentPosition;
 
-      'worklet';
+      ("worklet");
       if (newPosition != cardsPosition[id]) {
         cardsPosition.value = objectMove(
           cardsPosition.value,
@@ -112,21 +107,25 @@ export function MovabelCard({
 
       runOnJS(setMoving)(false);
     })
+    .onTouchesCancelled(() =>{
+      const newPosition = cardsPosition.value[id] * Cards.CARDS_HEIGHT;
+      top.value = withSpring(newPosition);
+
+      runOnJS(setMoving)(false);
+    })
     .simultaneousWithExternalGesture(longPressGesture);
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
       top: top.value - Cards.CARDS_HEIGHT,
-      //   opacity: opacity,
-      // opacity: withSpring(moving ? 1 : 0.4),
-      opacity: moving ? 1 : 0.4,
+      opacity: withSpring(moving ? 1 : 0.4),
       zIndex: moving ? 1 : 0,
     };
   }, [moving]);
 
   return (
     <Animated.View style={[movableCard.container, animatedStyle]}>
-      <GestureDetector gesture={Gesture.Race(dragGesture, longPressGesture)}>
+      <GestureDetector gesture={Gesture.Race(longPressGesture, dragGesture)}>
         <Card title={title} id={id} />
       </GestureDetector>
     </Animated.View>

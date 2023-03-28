@@ -5,15 +5,14 @@ export const header_style = StyleSheet.create({
     header_container: {
         backgroundColor: Colors.secondaryColor,
 
-        flex: 1/ 12,
-        paddingBottom: 16,
+        flex: 1/ 4,
 
         alignItems: 'center',
         justifyContent: 'center',
     },
     
     text_content: {
-        width: '300px',
+        width: 300,
 
         flexDirection: 'row',
         flexWrap: 'wrap',
@@ -25,7 +24,6 @@ export const header_style = StyleSheet.create({
         fontSize: 44,
         fontWeight: "800",
 
-        // lineHeight: 1,
         color: 'aliceblue',
     },
 
