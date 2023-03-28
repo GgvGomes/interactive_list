@@ -5,8 +5,9 @@ export const card_style = StyleSheet.create({
     cards_container: {
         flex: 1,
         padding: 32,
+        paddingTop: 0,
+        marginTop: 32,
         position: "relative",
-        // marginTop: 92,
     },
 
     card: {

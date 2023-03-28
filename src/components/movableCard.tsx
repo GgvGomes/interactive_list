@@ -18,8 +18,6 @@ import {
   PanGestureHandler,
 } from "react-native-gesture-handler";
 import { Cards } from "../styles/_abstract";
-import { Platform } from "react-native";
-import { useLongPress } from "use-long-press";
 
 export function MovabelCard({
   title,
@@ -43,7 +41,6 @@ export function MovabelCard({
       //   opacity.value = withSpring(opacity.value + 0.6);
       console.log("Long press started");
     })
-    // .onFinalize(() => runOnJS(setMoving)(true))
     .minDuration(500);
 
   const dragGesture = Gesture.Pan()
@@ -52,7 +49,6 @@ export function MovabelCard({
       moving == true ? state.activate() : state.fail();
     })
     .onUpdate((event) => {
-      // console.log(event)
       top.value = event.absoluteY + scrollY.value;
     })
     .onFinalize(() => {
@@ -63,7 +59,7 @@ export function MovabelCard({
     return {
       top: top.value - Cards.CARDS_HEIGHT,
       //   opacity: opacity,
-    //   opacity: withSpring(moving ? 1 : 0.4),
+        // opacity: withSpring(moving ? 1 : 0.4),
       opacity: moving ? 1 : 0.4,
       zIndex: moving ? 1 : 0,
     };
@@ -71,7 +67,7 @@ export function MovabelCard({
 
   return (
     <Animated.View style={[movableCard.container, animatedStyle]}>
-      <GestureDetector gesture={longPressGesture}>
+      <GestureDetector gesture={Gesture.Race(dragGesture, longPressGesture)}>
         <Card title={title} id={id} />
       </GestureDetector>
     </Animated.View>
