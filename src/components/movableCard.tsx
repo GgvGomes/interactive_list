@@ -39,8 +39,9 @@ export function MovabelCard({
   function objectMove(positions: number[], from: number, to: number) {
     "worklet";
     const newPostion = Object.assign({}, positions);
-    console.log(newPostion);
+    // console.log(newPostion);
 
+    // Sempre acontece uma animação de uma pra outro, oq faz com que sempre seja atualizado
     for (const id in positions) {
       if (positions[id] == from) {
         newPostion[id] = to;
