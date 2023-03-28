@@ -62,7 +62,7 @@ export function List() {
 const styles = StyleSheet.create({
     container: {
         color: 'aliceblue', 
-        // fontFamily: "'Roboto', sans-serif",
+
         flex: 1,
         backgroundColor: Colors.backgroundColor,
     },

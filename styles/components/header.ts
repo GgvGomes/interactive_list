@@ -22,7 +22,7 @@ export const header_style = StyleSheet.create({
 
     header_title:{
         fontSize: 44,
-        fontWeight: "800",
+        // fontWeight: "800",
 
         color: 'aliceblue',
     },
