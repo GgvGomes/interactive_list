@@ -1,4 +1,4 @@
-# interactive_list
+# Interactive List
 
 An interactive list with React Native.
 
