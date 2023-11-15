@@ -22,7 +22,7 @@ export function Header() {
           <Text
             style={[
               header_style.header_title,
-              { fontFamily: "Roboto_900Black" },
+              { fontFamily: fontsLoaded["Roboto_900Black"] },
             ]}
           >
             Musicos

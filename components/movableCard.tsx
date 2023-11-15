@@ -54,8 +54,7 @@ export function MovabelCard({
     () => cardsPosition.value[id], // observa quando acontece animação nele
     (currentPosition, previousPosition) => {
       if (currentPosition !== previousPosition) {
-        if (!moving)
-          top.value = withSpring(currentPosition * Cards.CARDS_HEIGHT);
+        if (!moving) top.value = withSpring(currentPosition * Cards.CARDS_HEIGHT);
       }
     },
     [moving]
@@ -66,11 +65,12 @@ export function MovabelCard({
       runOnJS(setMoving)(true);
       // console.log("Long press started");
     })
-    .minDuration(200)
+    .minDuration(200);
+  // useEffect(() => console.log(moving), [moving]);
 
-    // com uns 3 segundo ele n roda
+  // com uns 3 segundo ele n roda
   const dragGesture = Gesture.Pan()
-    .manualActivation(true)
+    .manualActivation(false)
     .onTouchesMove((event, state) => {
       moving == true ? state.activate() : state.fail();
     })
@@ -87,9 +87,6 @@ export function MovabelCard({
         startPositionList,
         Math.min(currentPosition, endPositionList)
       );
-
-      // Eu acho q isso já funcionava
-      // const newPosition = currentPosition;
 
       ("worklet");
       if (newPosition != cardsPosition[id]) {
@@ -109,7 +106,7 @@ export function MovabelCard({
     .onEnd((event) => {
       runOnJS(setMoving)(false);
     })
-    .simultaneousWithExternalGesture(longPressGesture);;
+    .simultaneousWithExternalGesture(longPressGesture);
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
