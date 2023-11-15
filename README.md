@@ -2,11 +2,8 @@
 
 An interactive list with React Native.
 
-<p align="center">
+<p align="center" style="display: flex; gap: 12px">
 	<img src="https://github.com/GgvGomes/interactive_list/assets/80273727/ef662480-d6c4-4107-85f3-c69de90076b6" />
-</p>
-
-<p align="center">
 	<img src="https://github.com/GgvGomes/interactive_list/assets/80273727/2a02544f-be7a-4ec2-81bf-df2277f1e609" />
 </p>
 
